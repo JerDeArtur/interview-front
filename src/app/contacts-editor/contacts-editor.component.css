@@ -1,0 +1,10 @@
+.buttons-div{
+  display: flex;
+  justify-content: space-between;
+}
+.error-message{
+  color: red;
+}
+.go-back-button{
+  float: right;
+}

@@ -1,1 +1,41 @@
-sss
+<div class="container h-100">
+  <h2 class="pt-3  d-inline-block">Contacts</h2>
+  <button class="btn btn-primary mb-2 mt-3 btn-sm float-right" [routerLink]="['/editor', 'new']">Add contact</button>
+  <div class="list-wrapper">
+    <div class="list-header-wrapper">
+      <div class="name-cell col-lg-4 col-3" (click)="sort('name')">
+        <b>Name</b>
+        <img
+          [ngStyle]="{'opacity' : sortOrders.name === 0 ? 0 : 100}"
+          [src]="sortOrders.name === 1 ? 'assets/caret-up.svg' : 'assets/caret-down.svg'"
+        >
+      </div>
+      <div class="email-cell col-4" (click)="sort('email')">
+        <b>Email</b>
+        <img
+          [ngStyle]="{'opacity' : sortOrders.email === 0 ? 0 : 100}"
+          [src]="sortOrders.email === 1 ? 'assets/caret-up.svg' : 'assets/caret-down.svg'"
+        >
+      </div>
+      <div class="phone-cell col-3" (click)="sort('phoneNumber')">
+        <b>Phone number</b>
+        <img
+          [ngStyle]="{'opacity' : sortOrders.phoneNumber === 0 ? 0 : 100}"
+          [src]="sortOrders.phoneNumber === 1 ? 'assets/caret-up.svg' : 'assets/caret-down.svg'"
+        >
+      </div>
+      <div class="actions-cell col-1"><b>Actions</b></div>
+    </div>
+    <ul class="list-body">
+      <li class="list-row" *ngFor="let contact of subj | async | sort:sortBy:sortOrder">
+        <div class="name-cell col-lg-4 col-3">{{contact.name}}</div>
+        <div class="email-cell col-4">{{contact.email}}</div>
+        <div class="phone-cell col-3">{{contact.phoneNumber}}</div>
+        <div class="actions-cell col-1">
+          <span class="link-btn" [routerLink]="['/editor', contact.id]">Edit</span>
+          <span class="link-btn" (click)="deleteContact(contact.id)">Delete</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

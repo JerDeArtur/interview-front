@@ -1,1 +1,58 @@
-edit
+<div class="container pt-3">
+  <h2 class="d-inline-block">Contact {{isNew ? 'creator' : 'editor'}}</h2>
+  <button class="btn btn-primary go-back-button" [routerLink]="['/']">Go back</button>
+  <div class="form-wrapper">
+    <form [formGroup]="formGroup" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="name">Name*</label>
+        <input
+          [ngClass]="{'is-invalid' : !formGroup.get('name')?.valid && formGroup.get('name')?.touched}"
+          formControlName="name"
+          type="text"
+          name="name"
+          id="name"
+          class="form-control"
+        >
+        <small
+          class="error-message"
+          [ngStyle]="{'opacity' : !formGroup.get('name')?.valid && formGroup.get('name')?.touched ? 100 : 0}"
+        >Name is required</small>
+      </div>
+      <div class="form-group">
+        <label for="email">Email*</label>
+        <input
+          [ngClass]="{'is-invalid' : !formGroup.get('email')?.valid && formGroup.get('email')?.touched}"
+          formControlName="email"
+          type="email"
+          name="email"
+          id="email"
+          class="form-control"
+        >
+        <small
+          class="error-message"
+          [ngStyle]="{'opacity' : !formGroup.get('email')?.valid && formGroup.get('email')?.touched ? 100 : 0}"
+        >{{formGroup.get('email')?.errors?.['required'] ? 'Email is required' : 'Such email format is not valid'}}</small>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone number*</label>
+        <input
+          [ngClass]="{'is-invalid' : !formGroup.get('phoneNumber')?.valid && formGroup.get('phoneNumber')?.touched}"
+          formControlName="phoneNumber"
+          type="tel"
+          name="phoneNumber"
+          id="phoneNumber"
+          class="form-control"
+        >
+        <small
+          class="error-message"
+          [ngStyle]="{'opacity' : !formGroup.get('phoneNumber')?.valid && formGroup.get('phoneNumber')?.touched ? 100 : 0}"
+        >{{formGroup.get('phoneNumber')?.errors?.['required'] ? 'Phone number is required' : 'Such phone number format is not valid'}}</small>
+      </div>
+      <div class="buttons-div">
+        <button class="btn btn-danger" type="button" (click)="resetForm()">Reset</button>
+        <button class="btn btn-success" [disabled]="!formGroup.valid">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+

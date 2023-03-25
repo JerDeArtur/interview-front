@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./contacts-list/contacts-list.module').then((x) => x.ContactsListModule)
   },
   {
-    path: 'editor',
+    path: 'edit',
     loadChildren: () => import('./contacts-editor/contacts-editor.module').then((x) => x.ContactsEditorModule)
   }
 ];

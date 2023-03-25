@@ -5,7 +5,7 @@ import { ContactsEditorComponent } from './contacts-editor.component';
 
 const paths: Routes = [
   {
-    path: '',
+    path: ':id',
     component: ContactsEditorComponent
   }
 ]
