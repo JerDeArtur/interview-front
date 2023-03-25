@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'edit',
     loadChildren: () => import('./contacts-editor/contacts-editor.module').then((x) => x.ContactsEditorModule)
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
 

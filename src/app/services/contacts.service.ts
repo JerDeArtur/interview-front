@@ -72,8 +72,6 @@ export class ContactsService{
         return throwError(() => new Error(err.error));
       })
     ).subscribe( () => {
-      console.log({...contact, id: contactId});
-
       this.contacts.splice(this.contacts.findIndex(c => c.id === contactId), 1, {...contact, id: contactId});
       this.contactsSubject.next([...this.contacts]);
       this.router.navigate(['/']);
