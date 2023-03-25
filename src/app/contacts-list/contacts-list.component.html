@@ -1,6 +1,6 @@
 <div class="container h-100">
   <h2 class="pt-3  d-inline-block">Contacts</h2>
-  <button class="btn btn-primary mb-2 mt-3 btn-sm float-right" [routerLink]="['/editor', 'new']">Add contact</button>
+  <button class="btn btn-primary mb-2 mt-3 btn-sm float-right" [routerLink]="['/edit', 'new']">Add contact</button>
   <div class="list-wrapper">
     <div class="list-header-wrapper">
       <div class="name-cell col-lg-4 col-3" (click)="sort('name')">
@@ -32,7 +32,7 @@
         <div class="email-cell col-4">{{contact.email}}</div>
         <div class="phone-cell col-3">{{contact.phoneNumber}}</div>
         <div class="actions-cell col-1">
-          <span class="link-btn" [routerLink]="['/editor', contact.id]">Edit</span>
+          <span class="link-btn" [routerLink]="['/edit', contact.id]">Edit</span>
           <span class="link-btn" (click)="deleteContact(contact.id)">Delete</span>
         </div>
       </li>
